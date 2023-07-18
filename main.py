@@ -19,6 +19,9 @@ soup = BeautifulSoup(response.text, features='html.parser')
 word = soup.find('h2').text
 word = word.upper()
 definition = soup.find('p').text
+if len(definition) > 240:
+    split_def = definition.split('.')
+    definition = split_def[0]
 post_text = f" - {word} - \n {definition}"
 
 # ----------------MAKE POST--------------------#
